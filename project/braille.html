@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>点字画像認識AI (AWS) - Project Details</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="project-detail" style="padding: 20px; max-width: 900px; margin: auto;">
+    <header style="padding-bottom: 20px;">
+      <a href="../index.html" style="text-decoration: none;">← 戻る</a>
+    </header>
 
+    <section class="fade-in">
+      <h1 class="section-title">点字画像認識AI (AWS)</h1>
+      
+      <div class="detail-content">
+        <h2>1. プロジェクトの背景と動機</h2>
+        <p>視覚障がい者が利用する点字を、カメラ画像からリアルタイムで解析・テキスト変換することを目指しました。点字特有の「凹凸による影」や「色のなさ」という課題に対し、クラウドAIを用いたアプローチを試みました。</p>
+
+        <h2>2. 使用したAWSサービス・技術</h2>
+        <ul class="skills-simple">
+          <li><strong>Amazon Rekognition:</strong> カスタムラベルを用いた画像認識モデルの学習・推論</li>
+          <li><strong>Amazon SageMaker:</strong> モデルの構築・学習環境の管理</li>
+          <li><strong>Amazon S3:</strong> 学習データおよび推論画像の管理</li>
+          <li><strong>Python (Pillow):</strong> 学習用データセット（点字画像）の自動生成</li>
+        </ul>
+
+        <h2>3. 開発のプロセスと工夫点</h2>
+        <div class="point-box" style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <h3>データセットの自作 (Python)</h3>
+          <p>日本語の点字画像データセットが不足していたため、PythonのPillowライブラリを用いて「あ」〜「ん」、濁音、句読点、数字の画像を各100枚ずつ自動生成し、学習データとして活用しました。</p>
+          
+          <h3>二段階の学習アプローチ</h3>
+          <p>「一文字認識」と「文章内からの文字分割」の二段階でモデルを学習。一文字認識においては<strong>信頼度90%以上</strong>の良好な結果を得ることができました。</p>
+        </div>
+
+        <h2>4. 成果と今後の課題</h2>
+        <p>一文字認識モデルは完成し、精度の高い識別が可能となりました。一方で、文章全体からの文字分割や、実際の写真からの認識には、より多様な学習データ（実写データ）の拡充が必要であることを確認しました。</p>
+
+        <h2>5. 発表資料（抜粋）</h2>
+        <div class="screenshot-area" style="text-align: center; margin-top: 30px;">
+          <div style="background: #eee; height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+            <p>※プレゼン資料の「一文字学習結果」や<br>「生成した点字画像」のスクショを掲載予定</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="margin-top: 50px; text-align: center; padding-bottom: 20px;">
+    &copy; 2026 佐藤建尚. All rights reserved.
+  </footer>
+</body>
+</html>
