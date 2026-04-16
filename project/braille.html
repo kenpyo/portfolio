@@ -1,41 +1,77 @@
-<section class="fade-in">
-  <h1 class="section-title">点字画像認識AI</h1>
-  
-  <div class="detail-content">
-    <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 30px;">
-      点字を解析し、テキストへ変換するシステム。Amazon Rekognitionを活用し、点字を識別するモデルを構築しました。
-    </p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>点字画像認識AI - 佐藤建尚 ポートフォリオ</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#projects">Back to Projects</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <h2>使用技術</h2>
-    <ul class="skills-simple">
-      <li><strong>AWS:</strong> Rekognition, SageMaker, S3 [cite: 12, 13, 14, 15]</li>
-      <li><strong>Python:</strong> Pillow (データセット生成用) [cite: 24, 25]</li>
-    </ul>
-
-    <h2>技術的な工夫とプロセス</h2>
-    <div class="point-box" style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-      <h3>1. 自作データセットによる学習</h3>
-      <p>日本語の点字画像データセットが不足していたため [cite: 22, 23]、PythonのPillowライブラリを用いて「あ」〜「ん」、濁音、数字等の画像を各100枚ずつ自動生成 [cite: 27, 28]。数千枚の学習データを自ら用意しました。</p>
+  <main style="padding: 20px; max-width: 900px; margin: auto;">
+    <section class="fade-in">
+      <h1 class="section-title">点字画像認識AI</h1>
       
-      <h3>2. 文字範囲の検出 (Bounding Box)</h3>
-      <p>Amazon SageMaker Ground Truthを使用し、画像内の点字位置を特定するためのラベリングを実施 [cite: 14, 33]。文字の内容を区別せず「範囲」に特化した学習を行うことで、解析の基礎を構築しました [cite: 35]。</p>
-      
-      <div style="text-align: center; margin: 20px 0;">
-        <img src="img/スクリーンショット 2025-07-28 153935.png" alt="ラベリング画面" style="max-width: 100%; border: 1px solid #ccc;">
-        <p style="font-size: 0.8em; color: #666;">SageMakerによる文字範囲の指定 [cite: 33]</p>
-      </div>
-    </div>
+      <div class="detail-content">
+        <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 30px;">
+          カメラ画像から点字を解析し、テキストへ変換するシステム。Amazon Rekognitionを活用し、点字特有の「影」や「凹凸」を識別するモデルを構築しました。
+        </p>
 
-    <h2>推論結果と分析</h2>
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
-      <div style="flex: 1; min-width: 300px;">
-        <img src="img/スクリーンショット 2025-07-29 032049.png" alt="JSONデータ" style="width: 100%; border: 1px solid #ccc;">
-        <p style="font-size: 0.8em; color: #666; text-align: center;">AWS Rekognitionからのレスポンスデータ [cite: 30]</p>
+        <h2>使用技術</h2>
+        <ul class="skills-simple">
+          <li><strong>AWS:</strong> Rekognition, SageMaker (Ground Truth), S3</li>
+          <li><strong>Python:</strong> Pillow (データセット自動生成用)</li>
+        </ul>
+
+        <h2>開発計画とステップ</h2>
+        <p>本プロジェクトでは、最終的な文章認識を見据えて以下の3段階で開発を計画しました。</p>
+        <ol style="line-height: 1.8; margin-bottom: 20px;">
+          <li><strong>一文字認識：</strong> 個別の点字がどの文字に該当するかを学習</li>
+          <li><strong>文章分割：</strong> 画像内のどこに文字があるかを特定（文字範囲の抽出）</li>
+          <li><strong>文章認識：</strong> 分割した各文字を順番に推論し、文字列として再構成</li>
+        </ol>
+
+        <h2>技術的な工夫とプロセス</h2>
+        <div class="point-box" style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #333;">
+          <h3 style="margin-top: 0;">1. 自作データセットによる学習</h3>
+          <p>既存のデータセットでは日本語（あ〜ん、濁音、数字等）の点字画像が不足していたため、PythonのPillowライブラリを用いて不足分の画像を自動生成。各文字100枚ずつ、計数千枚の学習データを自作することで解決しました。</p>
+          
+          <h3>2. 文字範囲の検出 (Bounding Box)</h3>
+          <p>Amazon SageMaker Ground Truthを使用し、画像内の点字位置を特定するためのラベリングを実施。文字の内容を区別せず「範囲」に特化した学習を行うことで、解析の基礎を構築しました。</p>
+          
+          <div style="text-align: center; margin: 20px 0;">
+            <img src="img/スクリーンショット 2025-07-28 153935.png" alt="ラベリング画面" style="max-width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+            <p style="font-size: 0.8em; color: #666;">SageMakerによる文字範囲の指定</p>
+          </div>
+        </div>
+
+        <h2>推論結果と分析</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 20px;">
+          <div style="flex: 1; min-width: 300px;">
+            <img src="img/スクリーンショット 2025-07-29 032049.png" alt="JSONデータ" style="width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+            <p style="font-size: 0.8em; color: #666; text-align: center;">AWS Rekognitionからのレスポンスデータ</p>
+          </div>
+          <div style="flex: 1; min-width: 300px;">
+            <p><strong>成果:</strong> 一文字認識モデルにおいて<strong>信頼度90%以上</strong>を達成し、モデルが完成しました。</p>
+            <p><strong>課題:</strong> 文章全体の認識においては、文字範囲は検出できるものの、正確な分割がうまくいかず文字数が合わないといった課題が残りました。</p>
+            <p><strong>展望:</strong> より精度の高い分割を実現するため、実際に撮影した実写データの拡充と、分割モデルの追加学習が必要であることを確認しました。</p>
+          </div>
+        </div>
       </div>
-      <div style="flex: 1; min-width: 300px;">
-        <p><strong>成果:</strong> 一文字認識モデルにおいて<strong>信頼度90%以上</strong>を達成 [cite: 31, 48, 49]。</p>
-        <p><strong>課題:</strong> 文章全体の認識では文字数の不一致が発生 [cite: 39, 41]。実写データの拡充や分割アルゴリズムの改良が必要であることを確認しました [cite: 44, 46, 50]。</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
+
+    <footer style="margin-top: 50px; text-align: center; padding: 20px 0; border-top: 1px solid #eee;">
+      <a href="../index.html">Topに戻る</a>
+      <p style="margin-top: 10px;">&copy; 2026 佐藤建尚. All rights reserved.</p>
+    </footer>
+  </main>
+</body>
+</html>
