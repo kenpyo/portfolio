@@ -35,29 +35,38 @@
 
         <h2>技術的な工夫とプロセス</h2>
         <div class="point-box" style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #333;">
-          <h3 style="margin-top: 0;">1. 学習済みモデルを用いた転移学習</h3>
-          <p>汎用的な物体検出モデルである <code>yolov8n.pt</code>（Nanoモデル）をベースに、自作のはんだ画像データセットで転移学習を実施。軽量なモデルを選択することで、推論の高速化と精度の両立を図りました。</p>
+          <h3 style="margin-top: 0;">1. 少量データに対する前処理（データ拡張）</h3>
+          <p>手元のはんだ画像データが非常に少なかったため、<code>ImageDataGenerator</code> を活用し画像の回転・ズーム・輝度調整などのデータ拡張（Data Augmentation）を実施。擬似的に学習バリエーションを増やすことで、モデルの汎用性向上を図りました。</p>
           
-          <h3>2. 精度検証とモデル評価</h3>
-          <p>学習過程において、検証データ（Validation set）を用いた推論結果の可視化を行い、精度を確認。混同行列（Confusion Matrix）や F1-curve 等の指標に基づき、特定の不良パターンに対するモデルの弱点を分析し、改善に繋げました。</p>
+          <h3>2. 検証データに基づく最適モデルの選定</h3>
+          <p>単に学習を回すだけでなく、検証データ（Validation set）に対する推論結果を詳細に分析しました。 Confusion Matrix（混同行列）や学習曲線を確認しながら、最もバランスの良い精度を示したエポックの重みを採用。</p>
 
           <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0;">
-            <img src="img/000.jpg" alt="良品サンプル" style="width: 30%; border-radius: 4px; border: 1px solid #ddd;">
-            <img src="img/014.jpg" alt="不良品サンプル1" style="width: 30%; border-radius: 4px; border: 1px solid #ddd;">
-            <img src="img/030.jpg" alt="不良品サンプル2" style="width: 30%; border-radius: 4px; border: 1px solid #ddd;">
-            <p style="font-size: 0.8em; color: #666; width: 100%; text-align: center;">学習・推論に使用したはんだ接合部のサンプル画像</p>
+            <img src="img/000.jpg" alt="良品サンプル" style="width: 30%; border-radius: 4px;">
+            <img src="img/014.jpg" alt="不良品サンプル1" style="width: 30%; border-radius: 4px;">
+            <img src="img/030.jpg" alt="不良品サンプル2" style="width: 30%; border-radius: 4px;">
+            <p style="font-size: 0.8em; color: #666; width: 100%; text-align: center;">解析に使用したはんだ接合部のサンプル画像</p>
           </div>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0; padding: 20px; background: #fff9f0; border-radius: 12px; border: 1px dashed #f9ab00;">
+          <p style="font-size: 0.95em; color: #666; margin-bottom: 15px;">
+            実装の全行程（データ拡張、学習、検証プロセス）は、<br>こちらのGoogle Colabノートブックで公開しています。
+          </p>
+          <a href="https://colab.research.google.com/drive/1oUuje1vLH4-_8JPEATPIzIXx5aIgitaJ?usp=sharing" target="_blank" style="background: #f9ab00; color: #fff; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-flex; align-items: center; transition: 0.3s;">
+            <span style="margin-right: 10px; font-size: 1.2em;">🚀</span> Google Colab で実際のコードを見る
+          </a>
         </div>
 
         <h2>成果と展望</h2>
         <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 20px;">
           <div style="flex: 1; min-width: 300px;">
             <h3>開発の成果</h3>
-            <p>実装したパイプラインにより、未知の画像に対してもバウンディングボックスを正しく描画し、不良を検知できることを確認。Pythonによる一連の機械学習フロー（データ読み込み〜学習〜推論〜評価）の実装力を養いました。</p>
+            <p>データ拡張と適切な検証プロセスを経ることで、少量データでも一定の識別が可能であることを確認しました。。Pythonによる一連の機械学習フロー（データ読み込み〜学習〜推論〜評価）の実装力を養いました。</p>
           </div>
           <div style="flex: 1; min-width: 300px;">
             <h3>今後の課題</h3>
-            <p>背景が複雑な基板や、照明条件の変化に伴う誤検知を減らすため、Data Augmentation（データ拡張）の強化や、より大規模なデータセットによる追加学習を検討しています。また、動画ストリームへの適用も視野に入れています。</p>
+            <p>さらに学習データを増やすことでモデルの堅牢性を高めるとともに、より多様な不良パターンへの対応を目指します。</p>
           </div>
         </div>
       </div>
