@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>はんだ不良判別AI - 佐藤建尚 ポートフォリオ</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#projects">Back to Projects</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main style="padding: 20px; max-width: 900px; margin: auto;">
+    <section class="fade-in">
+      <h1 class="section-title">はんだ不良判別AI</h1>
+      
+      <div class="detail-content">
+        <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 30px;">
+          最新の物体検出アルゴリズム <strong>YOLOv8</strong> を活用した、はんだ付けの不良判別システム。画像内のはんだ接合部を自動検出し、正常・不良（未はんだ等）をリアルタイムで識別することを目指しました。
+        </p>
+
+        <h2>使用技術</h2>
+        <ul class="skills-simple">
+          <li><strong>Model:</strong> YOLOv8 (ultralytics)</li>
+          <li><strong>Language:</strong> Python</li>
+          <li><strong>Library:</strong> OpenCV, Matplotlib</li>
+          <li><strong>Environment:</strong> Google Colaboratory (GPU)</li>
+        </ul>
+
+        <h2>技術的な工夫とプロセス</h2>
+        <div class="point-box" style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #333;">
+          <h3 style="margin-top: 0;">1. 学習済みモデルを用いた転移学習</h3>
+          <p>汎用的な物体検出モデルである <code>yolov8n.pt</code>（Nanoモデル）をベースに、自作のはんだ画像データセットで転移学習を実施。軽量なモデルを選択することで、推論の高速化と精度の両立を図りました。</p>
+          
+          <h3>2. 精度検証とモデル評価</h3>
+          <p>学習過程において、検証データ（Validation set）を用いた推論結果の可視化を行い、精度を確認。混同行列（Confusion Matrix）や F1-curve 等の指標に基づき、特定の不良パターンに対するモデルの弱点を分析し、改善に繋げました。</p>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0;">
+            <img src="img/000.jpg" alt="良品サンプル" style="width: 30%; border-radius: 4px; border: 1px solid #ddd;">
+            <img src="img/014.jpg" alt="不良品サンプル1" style="width: 30%; border-radius: 4px; border: 1px solid #ddd;">
+            <img src="img/030.jpg" alt="不良品サンプル2" style="width: 30%; border-radius: 4px; border: 1px solid #ddd;">
+            <p style="font-size: 0.8em; color: #666; width: 100%; text-align: center;">学習・推論に使用したはんだ接合部のサンプル画像</p>
+          </div>
+        </div>
+
+        <h2>成果と展望</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 20px;">
+          <div style="flex: 1; min-width: 300px;">
+            <h3>開発の成果</h3>
+            <p>実装したパイプラインにより、未知の画像に対してもバウンディングボックスを正しく描画し、不良を検知できることを確認。Pythonによる一連の機械学習フロー（データ読み込み〜学習〜推論〜評価）の実装力を養いました。</p>
+          </div>
+          <div style="flex: 1; min-width: 300px;">
+            <h3>今後の課題</h3>
+            <p>背景が複雑な基板や、照明条件の変化に伴う誤検知を減らすため、Data Augmentation（データ拡張）の強化や、より大規模なデータセットによる追加学習を検討しています。また、動画ストリームへの適用も視野に入れています。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top: 50px; text-align: center; padding: 20px 0; border-top: 1px solid #eee;">
+      <a href="../index.html">Topに戻る</a>
+      <p style="margin-top: 10px;">&copy; 2026 佐藤建尚. All rights reserved.</p>
+    </footer>
+  </main>
+</body>
+</html>
