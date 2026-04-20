@@ -22,29 +22,28 @@
       
       <div class="detail-content">
         <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 30px;">
-          最新の物体検出アルゴリズム <strong>YOLOv8</strong> を活用した、はんだ付けの不良判別システム。画像内のはんだ接合部を自動検出し、正常・不良（未はんだ等）をリアルタイムで識別することを目指しました。
+          最新のアルゴリズム>YOLOv8を活用した、はんだ付けの不良判別システム。画像内のはんだ接合部を自動検出し、正常・不良（未はんだ等）をリアルタイムで識別することを目指しました。
         </p>
 
         <h2>使用技術</h2>
         <ul class="skills-simple">
-          <li><strong>Model:</strong> YOLOv8 (ultralytics)</li>
-          <li><strong>Language:</strong> Python</li>
-          <li><strong>Library:</strong> OpenCV, Matplotlib</li>
-          <li><strong>Environment:</strong> Google Colaboratory (GPU)</li>
+          <li><strong>AI / Model:</strong> YOLOv8 (yolov8x-cls.pt / 4クラス分類)</li>
+          <li><strong>Library / API:</strong> Ultralytics, Scikit-learn, Pandas</li>
+          <li><strong>Logic / Tools:</strong> Python, Google Colab </li>
         </ul>
 
-        <h2>技術的な工夫とプロセス</h2>
-        <div class="point-box" style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #333;">
-          <h3 style="margin-top: 0;">1. 少量データに対する前処理（データ拡張）</h3>
-          <p>手元のはんだ画像データが非常に少なかったため、<code>ImageDataGenerator</code> を活用し画像の回転・ズーム・輝度調整などのデータ拡張（Data Augmentation）を実施。擬似的に学習バリエーションを増やすことで、モデルの汎用性向上を図りました。</p>
+        <h2>開発のプロセスと工夫</h2>
+        <div class="point-box">
+          <h3>1. 少量データに対する前処理の徹底</h3>
+          <p>手元の画像データが限られていたため、モデルの過学習を抑制。Pythonでデータを自動分割し、学習時に強力なデータ拡張を適用することで、少ないサンプルから効率的な学習を可能にしました。</p>
           
           <h3>2. 検証データに基づく最適モデルの選定</h3>
-          <p>単に学習を回すだけでなく、検証データ（Validation set）に対する推論結果を詳細に分析しました。 Confusion Matrix（混同行列）や学習曲線を確認しながら、最もバランスの良い精度を示したエポックの重みを採用。</p>
-
-          <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0;">
-            <img src="img/000.jpg" alt="良品サンプル" style="width: 30%; border-radius: 4px;">
-            <img src="img/014.jpg" alt="不良品サンプル1" style="width: 30%; border-radius: 4px;">
-            <img src="img/030.jpg" alt="不良品サンプル2" style="width: 30%; border-radius: 4px;">
+          <p>早期終了設定を用い、検証データで最も高い性能を自動選定。数値指標と実際の推論結果を照らし合わせ、客観的に評価しました。</p>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0;">
+            <img src="img/000.jpeg" alt="良品サンプル" style="width: 30%; border-radius: 4px;">
+            <img src="img/014.jpeg" alt="不良品サンプル1" style="width: 30%; border-radius: 4px;">
+            <img src="img/030.jpeg" alt="不良品サンプル2" style="width: 30%; border-radius: 4px;">
             <p style="font-size: 0.8em; color: #666; width: 100%; text-align: center;">解析に使用したはんだ接合部のサンプル画像</p>
           </div>
         </div>
@@ -58,16 +57,14 @@
           </a>
         </div>
 
-        <h2>成果と展望</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 20px;">
-          <div style="flex: 1; min-width: 300px;">
-            <h3>開発の成果</h3>
-            <p>データ拡張と適切な検証プロセスを経ることで、少量データでも一定の識別が可能であることを確認しました。。Pythonによる一連の機械学習フロー（データ読み込み〜学習〜推論〜評価）の実装力を養いました。</p>
-          </div>
-          <div style="flex: 1; min-width: 300px;">
-            <h3>今後の課題</h3>
-            <p>さらに学習データを増やすことでモデルの堅牢性を高めるとともに、より多様な不良パターンへの対応を目指します。</p>
-          </div>
+        <h2>評価と今後の展望</h2>
+        <div class="evaluation-box">
+          <h3>現在の到達点</h3>
+          <p>データ拡張と検証プロセスの工夫により、限られた環境下でもある程度識別能力を持つモデルを構築。機械学習の「実装」と「評価」の基礎を習得しました。</p>
+          
+          <h3>次なる課題</h3>
+          <p>汎用性の向上: 最終的なテスト結果は９割程度で、識別能力には課題が残ります。今後はさらなるデータ拡張やモデルの最適化を目指します。</p>
+        </div>
         </div>
       </div>
     </section>
