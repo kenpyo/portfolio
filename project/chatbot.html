@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チャットボット開発 - 佐藤建尚 ポートフォリオ</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#projects">Back to Projects</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main style="padding: 20px; max-width: 900px; margin: auto;">
+    <section class="fade-in">
+      <h1 class="section-title">LINE　チャットボット開発</h1>
+      
+      <div class="detail-content">
+        <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 30px;">
+          LINEチャットボットの開発。Gemini APIによる高度なテキスト解析や他APIとの連携により、多機能な対話応答を実現しました。
+        </p>
+
+        <h2>使用技術</h2>
+        <ul class="skills-simple">
+          <li><strong>AI / Model:</strong> Gemini API (LLMによる対話生成)</li>
+          <li><strong>Library / API:</strong> LINE Messaging API, Hot Pepper API</li>
+          <li><strong>Logic / Tools:</strong> Python, 辞書型による投票集計ロジック</li>
+        </ul>
+
+        <h2>開発のプロセスと工夫</h2>
+        <div class="point-box">
+          <h3>1. Gemini API による自然な対話の実装</h3>
+          <p>定型文以外の入力に対してもGemini APIを介して解析を行うことで、ユーザーの意図を汲み取った柔軟なメッセージ生成を可能にしました。</p>
+          <h3>2. 複数APIを連携させた店舗検索ロジック</h3>
+          <p>入力をGeminiでJSON形式に構造化し、店舗検索に必要なパラメータを抽出。これをHot Pepper APIへ受け渡すことで、高精度な外部サービス連携を実装しました</p>
+          <div style="text-align: center; margin: 10px 0;">
+            <img src="img/chatbot01.jpg" alt="対話入力例" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
+            <img src="img/chatbot02.jpg" alt="店舗検索結果" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
+          </div>
+          <h3>3. Googleカレンダー同期による予定管理</h3>
+          <p>Google Calendar APIと連携し、対話から抽出した日時情報をカレンダーへ自動登録。LINEを起点としたシームレスな予定管理を可能にしました。</p>
+          <div style="text-align: center; margin: 10px 0;">
+            <img src="img/chatbot03.jpg" alt="投票機能" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
+            <img src="img/chatbot04.jpg" alt="カレンダー空き時間照会" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
+          </div>
+        </div>
+
+
+        <h2>評価と今後の展望</h2>
+        <div class="evaluation-box">
+          <h3>現在の到達点</h3>
+          <p>最新のLLMと外部APIを統合し、実用的な対話型サービスを構築。</p>
+          <h3>次なる課題と展望</h3>
+          <p>レスポンスの高速化:複数APIの逐次処理による返信遅延が課題。今後は非同期処理の導入による速度改善を目指します。</p>
+        </div>
+    </section>
+
+    <footer style="margin-top: 50px; text-align: center; padding: 20px 0; border-top: 1px solid #eee;">
+      <a href="../index.html">Topに戻る</a>
+      <p style="margin-top: 10px;">&copy; 2026 佐藤建尚. All rights reserved.</p>
+    </footer>
+  </main>
+</body>
+</html>
