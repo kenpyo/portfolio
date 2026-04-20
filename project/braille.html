@@ -31,43 +31,43 @@
 
         <h2>使用技術</h2>
         <ul class="skills-simple">
-          <li><strong>AWS:</strong> Rekognition, SageMaker (Ground Truth), S3</li>
-          <li><strong>Python:</strong> Pillow (データセット完全自作・自動生成用)</li>
+          <li><strong>AI / Model:</strong> Amazon Rekognition (Custom Labels)</li>
+          <li><strong>Library / API:</strong> Python, Pillow (学習データ自動生成)</li>
+          <li><strong>Logic / Tools:</strong> AWS SageMaker Ground Truth (アノテーション), S3</li>
         </ul>
 
-        <h2>開発計画とステップ</h2>
-        <p>本プロジェクトでは、最終的な文章認識を見据えて以下の3段階で開発を計画しました。</p>
-        <ol style="line-height: 1.8; margin-bottom: 20px;">
-          <li><strong>一文字認識：</strong> 個別の点字がどの文字に該当するかを学習</li>
-          <li><strong>文章分割：</strong> 画像内のどこに文字があるかを特定（文字範囲の抽出）</li>
-          <li><strong>文章認識：</strong> 分割した各文字を順番に推論し、文字列として再構成</li>
-        </ol>
-
-        <h2>技術的な工夫とプロセス</h2>
-        <div class="point-box" style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #333;">
-          <h3 style="margin-top: 0;">1. データセットの自作 (Python Pillow)</h3>
-          <p>日本語の点字画像データセットが一般に公開されていなかったため、学習に必要なデータを自作しました。PythonのPillowライブラリを用いて「あ」〜「ん」、濁音、句読点、数字の画像を各100枚ずつ、計数千枚を自動生成し、独自にラベル付けを行ったデータセットを構築しました。</p>
+        <h2>開発のプロセスと工夫</h2>
+        <div class="point-box">
+          <h3>1. 日本語点字データセットの完全自作</h3>
+          <p>学習に必要な点字画像が不足していたため、Python(Pillow)で正確なデジタルパターン画像を自動生成。学習データを自ら用意しました。</p>
           
-          <h3>2. 文字範囲の検出 (Bounding Box)</h3>
-          <p>Amazon SageMaker Ground Truthを使用し、画像内の点字位置を特定するためのラベリングを実施。文字の内容を区別せず「範囲」に特化した学習を行うことで、解析の基礎となる分割モデルを作成しました。</p>
-          
-          <div style="text-align: center; margin: 20px 0;">
-            <img src="img/braiile_labeling.png" alt="ラベリング画面" style="max-width: 100%; border: 1px solid #ccc; border-radius: 4px;">
-            <p style="font-size: 0.8em; color: #666;">SageMakerによる文字範囲の指定</p>
-          </div>
+          <h3>2. SageMakerを用いた効率的なアノテーション</h3>
+          <p>生成画像に対し、SageMaker Ground Truthでバウンディングボックスを付与。文字認識の基礎となる「点字の範囲特定」に特化した学習プロセスを構築しました。</p>
+  
+          <h3>3. クラウドネイティブな開発フローの経験</h3>
+          <p>S3でのデータ管理からRekognitionでの学習・推論まで、AWSのマネージドサービスを組み合わせた迅速なシステム構築を実践しました。</p>
         </div>
 
-        <h2>推論結果と分析</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 20px;">
-          <div style="flex: 1; min-width: 300px;">
-            <img src="img/braille_json.png" alt="JSONデータ" style="width: 100%; border: 1px solid #ccc; border-radius: 4px;">
-            <p style="font-size: 0.8em; color: #666; text-align: center;">AWS Rekognitionからのレスポンスデータ</p>
-          </div>
-          <div style="flex: 1; min-width: 300px;">
-            <p><strong>成果:</strong> 自作したデータセットのみで学習を行った結果、一文字認識において<strong>信頼度90%以上</strong>を達成しました。</p>
-            <p><strong>課題:</strong> 文章全体の認識においては、文字範囲は検出できるものの、正確な分割がうまくいかず文字数が合わないといった課題が残りました。</p>
-            <p><strong>展望:</strong> より精度の高い分割を実現するため、今後は合成画像だけでなく、実際に撮影した多様な実写データの拡充が必要であることを確認しました。</p>
-          </div>
+        <h2>開発のプロセスと工夫</h2>
+        <div class="point-box">
+          <h3>1. 日本語点字データセットの自作</h3>
+          <p>学習に必要な点字画像が不足していたため、Python(Pillow)で正確なデジタルパターン画像を自動生成し学習データを用意しました。</p>
+          
+          <h3>2. SageMakerを用いた効率的なアノテーション</h3>
+          <p>生成画像に対し、SageMaker Ground Truthでバウンディングボックスを付与。文字認識の基礎となる「点字の範囲特定」に特化した学習プロセスを構築しました。</p>
+  
+          <h3>3. クラウドネイティブな開発フローの経験</h3>
+          <p>S3でのデータ管理からRekognitionでの学習・推論まで、AWSのマネージドサービスを組み合わせた迅速なシステム構築を実践しました。</p>
+        </div>
+
+        <h2>評価と今後の展望</h2>
+        <div class="evaluation-box">
+          <h3>現在の到達点</h3>
+          <p>自作のデジタルパターンにおいて一文字認識の信頼度90%以上を達成。クラウドサービスを統合して課題を解決する実装フローを習得しました。</p>
+          
+          <h3>次なる課題</h3>
+          <p>実写データへの対応:現状はデジタルパターンに特化しているため、今後は実写の影や凹凸が含まれる画像に対する認識精度の向上を目指します。</p>
+        </div>
         </div>
       </div>
     </section>
