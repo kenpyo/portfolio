@@ -83,18 +83,29 @@ nav {
   font-size: 1.3rem;
   color: #007acc;
 }
-.skills-simple li {
-  background: linear-gradient(45deg, #007acc, #00aaff);
-  color: white;
-  padding: 10px 22px;
-  border-radius: 25px;
-  box-shadow: 0 4px 15px rgba(0, 122, 204, 0.6);
-  cursor: default;
-  transition: background 0.3s ease;
-  user-select: none;
+
+.skills-simple {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* 幅が狭くなったら折り返す */
+  gap: 10px;      /* ボックス同士の間隔 */
+  margin-bottom: 20px;
 }
-.skills-simple li:hover {
-  background: linear-gradient(45deg, #005f99, #007acc);
+
+.skills-simple li {
+  background: #eef6ff;      /* 薄い青色 */
+  border: 1px solid #007bff; /* 青い枠線 */
+  color: #0056b3;
+  padding: 8px 15px;
+  border-radius: 20px;       /* 角を丸くしてタグ風に */
+  font-size: 0.9em;
+  white-space: nowrap;       /* 文字を改行させない */
+}
+
+.skills-simple li strong {
+  margin-right: 5px;
+  color: #333;
 }
 
 /* Projects vertical list */
