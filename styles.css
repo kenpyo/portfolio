@@ -226,23 +226,36 @@ nav {
   line-height: 1.5;
 }
 
-/* Certifications */
+/* Certifications セクション全体 */
+#certifications {
+  max-width: 600px; 
+  margin: 0 auto 80px;
+  padding: 0 20px;
+}
+
+/* 資格リストのスタイル */
 .cert-list {
   list-style: none;
   padding: 0;
-  max-width: 500px;
-  margin: 0 auto 80px;
-  font-size: 1.1rem;
-  color: #333;
-  line-height: 1.6;
+  margin: 0;
 }
+
 .cert-list li {
-  background: #f0f8ff;
-  margin-bottom: 12px;
-  padding: 12px 20px;
-  border-left: 5px solid #007acc;
-  border-radius: 6px;
-  box-shadow: 0 3px 8px rgba(0,122,204,0.1);
+  background: #f0f8ff; /* 爽やかな薄い青 */
+  border-left: 5px solid #007acc; /* 左側にアクセントの太線 */
+  margin-bottom: 15px;
+  padding: 15px 25px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.cert-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
 }
 
 /* Contactセクション全体を中央寄せ */
