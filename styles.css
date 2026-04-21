@@ -70,6 +70,66 @@ nav {
   white-space: pre-line;
 }
 
+/* プロジェクト一覧のグリッド */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 各カードのスタイル */
+.project-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border-color: #007bff;
+}
+
+.project-card h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* 使用技術のタグ */
+.tag-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.tag-list li {
+  background: #eef6ff;
+  border: 1px solid #007bff;
+  color: #0056b3;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+}
+
+.project-card p {
+  font-size: 0.9em;
+  color: #666;
+  line-height: 1.5;
+}
+
 /* Skills - text only */
 .skills-simple {
   list-style: none;
