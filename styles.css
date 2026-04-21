@@ -70,11 +70,18 @@ nav {
   white-space: pre-line;
 }
 
-/* プロジェクト一覧のグリッド */
+/* Projects全体のコンテナ制限 */
+#projects {
+  max-width: 960px; /* プロフィールと同じか、少し広めに設定 */
+  margin: 0 auto 80px;
+  padding: 0 30px; /* 左右に余裕を持たせる */
+}
+
+/* グリッド自体のマージンを調整 */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 30px; /* カード同士の間隔を少し広げるとゆとりが出ます */
   margin-top: 30px;
 }
 
@@ -236,6 +243,17 @@ nav {
   border-left: 5px solid #007acc;
   border-radius: 6px;
   box-shadow: 0 3px 8px rgba(0,122,204,0.1);
+}
+
+/* Contactセクション全体を中央寄せ */
+#contact {
+  text-align: center;
+  padding: 0 20px;
+  margin-bottom: 80px;
+}
+
+#contact p {
+  margin: 10px 0;
 }
 
 /* Footer */
