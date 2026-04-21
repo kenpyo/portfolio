@@ -1,37 +1,60 @@
-<main style="padding: 20px; max-width: 900px; margin: auto;">
-  <section class="fade-in">
-    <h1 class="section-title">Webショッピングサイト</h1>
-    
-    <p style="font-size: 1.05em; line-height: 1.6; margin-bottom: 25px;">
-      PHPとMySQLを用いた動的なECサイト。ユーザー側の買い物機能から、管理者側の在庫管理までを一貫して実装しました。
-    </p>
-
-    <h2>使用技術</h2>
-    <ul class="skills-simple">
-      <li><strong>AI / Model:</strong> なし </li>
-      <li><strong>Library / API:</strong> PHP (PDO), MySQL (MariaDB)</li>
-      <li><strong>Logic / Tools:</strong> ロリポップ！(サーバー), セッション管理, SQLによるデータ操作</li>
-    </ul>
-
-    <h2>開発のプロセスと工夫</h2>
-    <div class="point-box">
-      <h3>1. データベース設計とCRUD処理の実装</h3>
-      <p>商品・ユーザー・カートの各テーブルを適切に設計。PHPのPDOを用いて、情報の登録・取得・更新・削除を確実に行えるバックエンドを構築しました。</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チャットボット開発 - 佐藤建尚 ポートフォリオ</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#projects">Back to Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main style="padding: 20px; max-width: 900px; margin: auto;">
+    <section class="fade-in">
+      <h1 class="section-title">Webショッピングサイト</h1>
       
-      <h3>2. セッションによる認証と状態維持</h3>
-      <p>セッション管理機能を活用し、ログイン状態やカート内容を保持。ユーザーごとにパーソナライズされた購入体験を実装しました。</p>
-
-      <h3>3. 外部サーバー（ロリポップ！）への公開</h3>
-      <p>ローカル環境での開発後、ロリポップサーバーへデプロイ。FTP転送や本番環境でのDB連携設定など、公開までの一連のフローを完遂しました。</p>
-    </div>
-
-    <h2>評価と今後の展望</h2>
-    <div class="evaluation-box">
-      <h3>現在の到達点</h3>
-      <p>Webアプリケーションの基本構造を習得。外部サーバーで公開・稼働させる実務に近い開発フローを経験しました。</p>
-      
-      <h3>次なる課題</h3>
-      <p><strong>セキュリティと保守性:</strong> 脆弱性対策の強化や、Laravel等のモダンなフレームワークを用いた効率的な開発手法に挑戦したいと考えています。</p>
-    </div>
-  </section>
-</main>
+      <p style="font-size: 1.05em; line-height: 1.6; margin-bottom: 25px;">
+        PHPとMySQLを用いた動的なECサイト。ユーザー側の買い物機能から、管理者側の在庫管理までを一貫して実装しました。
+      </p>
+  
+      <h2>使用技術</h2>
+      <ul class="skills-simple">
+        <li><strong>AI / Model:</strong> なし </li>
+        <li><strong>Library / API:</strong> PHP (PDO), MySQL (MariaDB)</li>
+        <li><strong>Logic / Tools:</strong> ロリポップ！(サーバー), セッション管理, SQLによるデータ操作</li>
+      </ul>
+  
+      <h2>開発のプロセスと工夫</h2>
+      <div class="point-box">
+        <h3>1. データベース設計とCRUD処理の実装</h3>
+        <p>商品・ユーザー・カートの各テーブルを適切に設計。PHPのPDOを用いて、情報の登録・取得・更新・削除を確実に行えるバックエンドを構築しました。</p>
+        
+        <h3>2. セッションによる認証と状態維持</h3>
+        <p>セッション管理機能を活用し、ログイン状態やカート内容を保持。ユーザーごとにパーソナライズされた購入体験を実装しました。</p>
+  
+        <h3>3. 外部サーバー（ロリポップ！）への公開</h3>
+        <p>ローカル環境での開発後、ロリポップサーバーへデプロイ。FTP転送や本番環境でのDB連携設定など、公開までの一連のフローを完遂しました。</p>
+      </div>
+  
+      <h2>評価と今後の展望</h2>
+      <div class="evaluation-box">
+        <h3>現在の到達点</h3>
+        <p>Webアプリケーションの基本構造を習得。外部サーバーで公開・稼働させる実務に近い開発フローを経験しました。</p>
+        
+        <h3>次なる課題</h3>
+        <p><strong>セキュリティと保守性:</strong> 脆弱性対策の強化や、Laravel等のモダンなフレームワークを用いた効率的な開発手法に挑戦したいと考えています。</p>
+      </div>
+    </section>
+  </main>
+  <footer style="margin-top: 50px; text-align: center; padding: 20px 0; border-top: 1px solid #eee;">
+    <a href="../index.html">Topに戻る</a>
+    <p style="margin-top: 10px;">&copy; 2026 佐藤建尚. All rights reserved.</p>
+  </footer>
+</body>
+</html>
