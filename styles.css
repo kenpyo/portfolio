@@ -325,3 +325,20 @@ footer {
     justify-content: center;
   }
 }
+
+
+.visit-button {
+  background: #007acc;
+  color: #fff !important;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 122, 204, 0.3);
+}
+.visit-button:hover {
+  background: #005fa3;
+  transform: translateY(-2px);
+}
