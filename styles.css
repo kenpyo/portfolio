@@ -130,41 +130,39 @@ nav {
   line-height: 1.5;
 }
 
-/* Skills - text only */
-.skills-simple {
+/* --- 使用技術のタグ表示（共通設定） --- */
+.skills-simple, .tag-list {
   list-style: none;
   padding: 0;
-  max-width: 480px;
-  margin: 0 auto 80px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #007acc;
-}
-
-.skills-simple {
-  list-style: none;
-  padding: 0;
+  margin: 20px 0; /* 上下の余白 */
   display: flex;
   flex-wrap: wrap; /* 幅が狭くなったら折り返す */
-  gap: 10px;      /* ボックス同士の間隔 */
-  margin-bottom: 20px;
+  gap: 10px;      /* タグ同士の間隔 */
+  justify-content: flex-start; /* 左寄せ（中央がいい場合はcenterに変更） */
 }
 
-.skills-simple li {
-  background: #eef6ff;      /* 薄い青色 */
-  border: 1px solid #007bff; /* 青い枠線 */
+/* 詳細ページのスキル枠調整 */
+.skills-simple {
+  max-width: 100%; /* 横幅いっぱい使えるようにする */
+  margin-bottom: 40px;
+}
+
+/* タグ1つ1つの見た目 */
+.skills-simple li, .tag-list li {
+  background: #eef6ff;
+  border: 1px solid #007bff;
   color: #0056b3;
-  padding: 8px 15px;
-  border-radius: 20px;       /* 角を丸くしてタグ風に */
-  font-size: 0.9em;
-  white-space: nowrap;       /* 文字を改行させない */
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap; /* 文字を改行させない */
+  display: flex;
+  align-items: center;
 }
 
 .skills-simple li strong {
-  margin-right: 5px;
+  margin-right: 6px;
   color: #333;
 }
 
