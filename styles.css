@@ -113,6 +113,23 @@ section {
   border-color: var(--primary-color);
 }
 
+.project-card-link {
+  color: inherit;
+}
+
+.project-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+  color: var(--text-color);
+}
+
+.project-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+
 /* --- Tags (Shared Style) --- */
 .tag-list, .skills-simple {
   list-style: none;
