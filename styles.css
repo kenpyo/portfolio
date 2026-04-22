@@ -1,38 +1,57 @@
-/* Reset & base */
+/* --- Variables & Reset --- */
+:root {
+  --primary-color: #007acc;
+  --primary-hover: #005fa3;
+  --bg-color: #f9faff;
+  --text-color: #333;
+  --text-muted: #666;
+  --card-bg: #ffffff;
+  --tag-bg: #eef6ff;
+  --border-color: #ddd;
+  --shadow-sm: 0 3px 8px rgba(0,0,0,0.1);
+  --shadow-md: 0 10px 20px rgba(0,0,0,0.1);
+  --shadow-lg: 0 20px 45px rgba(0,0,0,0.12);
+  --transition: 0.3s ease;
+}
+
 * {
   box-sizing: border-box;
 }
-body
+
+body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9faff;
-  color: #333;
+  font-family: 'Segoe UI', "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-a {
-  text-decoration: none;
-  color: #007acc;
-  transition: color 0.3s ease;
-}
-a:hover {
-  color: #004a99;
 }
 
-/* Header */
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* --- Layout Components --- */
 header {
   background: white;
   padding: 18px 30px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
   z-index: 100;
 }
+
 nav {
   max-width: 960px;
   margin: 0 auto;
 }
+
 .nav-list {
   list-style: none;
   display: flex;
@@ -42,11 +61,7 @@ nav {
   margin: 0;
   font-weight: 600;
 }
-.nav-list li {
-  cursor: pointer;
-}
 
-/* Section titles */
 .section-title {
   text-align: center;
   font-size: 2.4rem;
@@ -56,13 +71,18 @@ nav {
   letter-spacing: 0.05em;
 }
 
-/* Profile */
-#profile {
-  max-width: 680px;
+section {
+  max-width: 960px;
   margin: 0 auto 80px;
   padding: 0 20px;
+}
+
+/* --- Profile --- */
+#profile {
+  max-width: 680px;
   text-align: center;
 }
+
 #profile p {
   font-size: 1.2rem;
   color: #444;
@@ -70,132 +90,72 @@ nav {
   white-space: pre-line;
 }
 
-/* Projects全体のコンテナ制限 */
-#projects {
-  max-width: 960px; /* プロフィールと同じか、少し広めに設定 */
-  margin: 0 auto 80px;
-  padding: 0 30px; /* 左右に余裕を持たせる */
-}
-
-/* グリッド自体のマージンを調整 */
+/* --- Projects Grid --- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px; /* カード同士の間隔を少し広げるとゆとりが出ます */
+  gap: 30px;
   margin-top: 30px;
 }
 
-.project-card-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* 各カードのスタイル */
 .project-card {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform var(--transition), box-shadow var(--transition);
   height: 100%;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  border-color: #007bff;
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
 }
 
-.project-card h3 {
-  margin-top: 0;
-  font-size: 1.2em;
-  color: #333;
-}
-
-/* 使用技術のタグ */
-.tag-list {
+/* --- Tags (Shared Style) --- */
+.tag-list, .skills-simple {
   list-style: none;
   padding: 0;
+  margin: 15px 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 10px 0;
+  gap: 10px;
 }
 
-.tag-list li {
-  background: #eef6ff;
-  border: 1px solid #007bff;
+.tag-list li, .skills-simple li {
+  background: var(--tag-bg);
+  border: 1px solid var(--primary-color);
   color: #0056b3;
-  padding: 4px 10px;
-  border-radius: 15px;
-  font-size: 0.8em;
-}
-
-.project-card p {
-  font-size: 0.9em;
-  color: #666;
-  line-height: 1.5;
-}
-
-/* --- 使用技術のタグ表示（共通設定） --- */
-.skills-simple, .tag-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0; /* 上下の余白 */
-  display: flex;
-  flex-wrap: wrap; /* 幅が狭くなったら折り返す */
-  gap: 10px;      /* タグ同士の間隔 */
-  justify-content: flex-start; /* 左寄せ（中央がいい場合はcenterに変更） */
-}
-
-/* 詳細ページのスキル枠調整 */
-.skills-simple {
-  max-width: 100%; /* 横幅いっぱい使えるようにする */
-  margin-om: 40px;
-}
-
-/* タグ1つ1つの見た目 */
-.skills-simple li, .tag-list li {
-  background: #eef6ff;
-  border: 1px solid #007bff;
-  color: #0056b3;
-  padding: 6px 15px;
+  padding: 5px 15px;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  white-space: nowrap; /* 文字を改行させない */
+  white-space: nowrap;
   display: flex;
   align-items: center;
 }
 
-.skills-simple li strong {
-  margin-right: 6px;
-  color: #333;
+/* --- Work Items (Vertical List) --- */
+.gallery {
+  max-width: 720px;
 }
 
-/* Projects vertical list */
-.gallery {
-  display: block;
-  max-width: 720px;
-  margin: 0 auto 80px;
-  padding: 0 15px;
-  gap: 40px;
-}
 .work-item {
   display: flex;
-  flex-direction: row;
   background: white;
   border-radius: 18px;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+  box-shadow: var(--shadow-lg);
   overflow: hidden;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
-  cursor: pointer;
-  margin-om: 40px;
+  margin-bottom: 40px;
 }
+
 .work-item:hover {
   transform: translateY(-10px);
   box-shadow: 0 30px 60px rgba(0,0,0,0.2);
 }
+
 .work-item img {
   width: 280px;
   height: 180px;
@@ -203,175 +163,93 @@ nav {
   transition: transform 0.6s ease;
   flex-shrink: 0;
 }
+
 .work-item:hover img {
   transform: scale(1.08);
 }
+
 .work-content {
   padding: 20px 25px;
-  text-align: left;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex: 1;
-}
-.work-content h3 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-om: 14px;
-  color: #004a99;
-}
-.work-content p {
-  font-size: 1.1rem;
-  color: #555;
-  line-height: 1.5;
 }
 
-/* Certifications セクション全体 */
+/* --- Certifications --- */
 #certifications {
-  max-width: 600px; 
-  margin: 0 auto 80px;
-  padding: 0 20px;
+  max-width: 600px;
 }
 
-/* 資格リストのスタイル */
 .cert-list {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .cert-list li {
-  background: #f0f8ff; /* 爽やかな薄い青 */
-  border-left: 5px solid #007acc; /* 左側にアクセントの太線 */
-  margin-om: 15px;
+  background: #f0f8ff;
+  border-left: 5px solid var(--primary-color);
+  margin-bottom: 15px;
   padding: 15px 25px;
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   display: flex;
   align-items: center;
-  transition: transform 0.2s ease;
 }
 
 .cert-name {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #333;
 }
 
 .cert-date {
   font-size: 0.85em;
   color: #888;
-  margin-left: 10px;
-  font-weight: normal;
+  margin-left: auto; /* 日付を右側に寄せる */
 }
 
-.cert-sub-list li {
-  background: #f9faff;
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-  color: #555;
-}
-
-@media (max-width: 600px) {
-  .cert-sub-list {
-    grid-template-columns: 1fr !important; /* スマホでは1列に */
-  }
-}
-
-/* Contactセクション全体を中央寄せ */
-#contact {
-  text-align: center;
-  padding: 0 20px;
-  margin-om: 80px;
-}
-
-#contact p {
-  margin: 10px 0;
-}
-
-/* 外部リンク用のアクションボックス*/
-.action-box {
-  text-align: center;
-  margin: 40px auto;
-  padding: 30px 20px;
-  background: #fff9f0;
-  border-radius: 12px;
-  border: 1px dashed #f9ab00;
-  max-width: 700px;
-}
-
-.action-box p {
-  font-size: 0.95em;
-  color: #555;
-  margin-om: 20px;
-}
-
-/* 外枠のボックス */
+/* --- Action Box & Buttons --- */
 .action-box {
   text-align: center;
   margin: 40px auto;
   padding: 30px 20px;
   background: #f8f9fa;
   border-radius: 12px;
-  border: 1px dashed #007acc;
+  border: 1px dashed var(--primary-color);
   max-width: 700px;
 }
 
-.action-box p {
-  font-size: 0.95em;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.btn-external {
-  background-color: #007acc;
-  color: #ffffff !important;           
+.btn-external, .visit-button {
+  background-color: var(--primary-color);
+  color: #fff !important;
   padding: 14px 28px;
-  text-decoration: none;
-  border-radius: 8px;
+  border-radius: 30px;
   font-weight: bold;
   display: inline-flex;
   align-items: center;
-  transition: 0.3s ease;
+  transition: var(--transition);
   box-shadow: 0 4px 12px rgba(0, 122, 204, 0.2);
-  border: none;               
+  border: none;
+  cursor: pointer;
 }
 
-.btn-external:hover {
-  background-color: #005fa3 !important;
+.btn-external:hover, .visit-button:hover {
+  background-color: var(--primary-hover) !important;
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0, 122, 204, 0.3);
 }
 
-.btn-icon {
-  margin-right: 10px;
-  font-size: 1.2em;
-}
-/* Footer */
-footer {
-  text-align: center;
-  color: #007acc;
-  font-weight: 600;
-  font-size: 1rem;
-  margin: 60px 0 40px;
-  user-select: none;
-}
-
-/* Fade-in animation */
+/* --- Animations --- */
 .fade-in {
   opacity: 0;
   transform: translateY(40px);
   animation: fadeInUp 1s forwards;
 }
-.fade-in.delay-1 {
-  animation-delay: 0.4s;
-}
-.fade-in.delay-2 {
-  animation-delay: 0.8s;
-}
-.fade-in.delay-3 {
-  animation-delay: 1.2s;
-}
+
+.delay-1 { animation-delay: 0.4s; }
+.delay-2 { animation-delay: 0.8s; }
+.delay-3 { animation-delay: 1.2s; }
+
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -379,44 +257,33 @@ footer {
   }
 }
 
-/* Responsive */
+/* --- Footer --- */
+footer {
+  text-align: center;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin: 60px 0 40px;
+}
+
+/* --- Responsive --- */
 @media (max-width: 720px) {
-  .skills-simple {
-    flex-wrap: wrap;
-    gap: 16px;
-  }
   .work-item {
     flex-direction: column;
   }
   .work-item img {
     width: 100%;
-    height: 180px;
   }
-  .work-content {
-    padding: 15px 20px;
+  .nav-list {
+    gap: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .nav-list {
     flex-wrap: wrap;
-    justify-content: center;
+    font-size: 0.9rem;
   }
-}
-
-
-.visit-button {
-  background: #007acc;
-  color: #fff !important;
-  padding: 15px 30px;
-  border-radius: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.3s, transform 0.2s;
-  box-shadow: 0 4px 15px rgba(0, 122, 204, 0.3);
-}
-.visit-button:hover {
-  background: #005fa3;
-  transform: translateY(-2px);
+  .section-title {
+    font-size: 1.8rem;
+  }
 }
