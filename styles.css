@@ -2,7 +2,7 @@
 * {
   box-sizing: border-box;
 }
-body {
+body
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f9faff;
@@ -256,6 +256,26 @@ nav {
   font-size: 1.1rem;
   font-weight: 700;
   color: #333;
+}
+
+.cert-date {
+  font-size: 0.85em;
+  color: #888;
+  margin-left: 10px;
+  font-weight: normal;
+}
+
+.cert-sub-list li {
+  background: #f9faff;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  color: #555;
+}
+
+@media (max-width: 600px) {
+  .cert-sub-list {
+    grid-template-columns: 1fr !important; /* スマホでは1列に */
+  }
 }
 
 /* Contactセクション全体を中央寄せ */
