@@ -301,6 +301,24 @@ section {
   }
 }
 
+/* --- Contact --- */
+#contact {
+  text-align: center; /* これで文字とボタンが中央に寄ります */
+}
+
+#contact p {
+  margin-bottom: 20px;
+}
+
+/* Emailのメルアド部分だけ少し目立たせるなら */
+#contact span {
+  font-weight: 700;
+  color: var(--primary-color);
+  display: block; /* 改行して独立させる場合 */
+  margin-top: 10px;
+}
+
+
 /* --- Footer --- */
 footer {
   text-align: center;
