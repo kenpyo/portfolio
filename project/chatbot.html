@@ -22,22 +22,23 @@
       
       <div class="detail-content">
         <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 30px;">
-          LINEチャットボットの開発。Gemini APIによる高度なテキスト解析や他APIとの連携により、多機能な対話応答を実現しました。
+          グループチャットで利用できるLINEチャットボットの開発。Gemini APIによる高度なテキスト解析や他APIとの連携により、多機能な対話応答を実現しました。
         </p>
 
         <h2>使用技術</h2>
         <ul class="skills-simple">
-          <li><strong>AI / Model:</strong> Gemini API (LLMによる対話生成)</li>
+          <li><strong>AI / Model:</strong> Gemini API </li>
           <li><strong>Library / API:</strong> LINE Messaging API, Hot Pepper API</li>
-          <li><strong>Logic / Tools:</strong> Python, 辞書型による投票集計ロジック</li>
+          <li><strong>Logic / Tools:</strong> Python</li>
         </ul>
 
         <h2>開発のプロセスと工夫</h2>
         <div class="point-box">
+          <p>「幹事の負担を最小限にする」ことを目標に、要件定義から詳細設計、実装までを4人のチームで行い、アジャイル開発でコア機能から順次追加、改善を繰り返しました。</p>
           <h3>1. Gemini API による自然な対話の実装</h3>
-          <p>定型文以外の入力に対してもGemini APIを介して解析を行うことで、ユーザーの意図を汲み取った柔軟なメッセージ生成を可能にしました。</p>
+          <p>定型文以外の入力に対してもGemini APIを介して解析を行うことで、柔軟にユーザーの意図を汲み取ることを可能にしました。</p>
           <h3>2. 複数APIを連携させた店舗検索ロジック</h3>
-          <p>入力をGeminiでJSON形式に構造化し、店舗検索に必要なパラメータを抽出。これをHot Pepper APIへ受け渡すことで、高精度な外部サービス連携を実装しました</p>
+          <p>入力をGeminiでJSON形式に構造化し、必要なパラメータを抽出。これをHot Pepper APIへ受け渡し店舗検索を行う機能を実装しました。</p>
           <div style="text-align: center; margin: 10px 0;">
             <img src="img/chatbot01.jpg" alt="対話入力例" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
             <img src="img/chatbot02.jpg" alt="店舗検索結果" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
@@ -48,6 +49,15 @@
             <img src="img/chatbot03.jpg" alt="投票機能" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
             <img src="img/chatbot04.jpg" alt="カレンダー空き時間照会" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
           </div>
+        </div>
+
+
+        <h2>評価と今後の展望</h2>
+        <div class="evaluation-box">
+          <h3>現在の到達点</h3>
+          <p>LLMと外部APIを統合し、対話型サービスを構築。</p>
+          <h3>次なる課題と展望</h3>
+          <p>レスポンスの高速化:複数APIの逐次処理による返信遅延が課題。今後は非同期処理の導入による速度改善を目指します。</p>
         </div>
 
         <div class="action-box">
@@ -62,15 +72,6 @@
               <span class="btn-icon">⚙️</span> 基本設計書 (PDF)
             </a>
           </div>
-        </div>
-
-
-        <h2>評価と今後の展望</h2>
-        <div class="evaluation-box">
-          <h3>現在の到達点</h3>
-          <p>最新のLLMと外部APIを統合し、実用的な対話型サービスを構築。</p>
-          <h3>次なる課題と展望</h3>
-          <p>レスポンスの高速化:複数APIの逐次処理による返信遅延が課題。今後は非同期処理の導入による速度改善を目指します。</p>
         </div>
     </section>
 
