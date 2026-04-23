@@ -22,7 +22,8 @@
       
       <div class="detail-content">
         <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 30px;">
-          グループチャットで利用できるLINEチャットボットの開発。Gemini APIによる高度なテキスト解析や他APIとの連携により、多機能な対話応答を実現しました。
+          「幹事の負担を最小限にする」ことを目標にLINEのグループチャット上で動作する幹事代行チャットボットを開発しました。
+          開発は要件定義から詳細設計、実装までを4人のチームで行いました。
         </p>
 
         <h2>使用技術</h2>
@@ -34,20 +35,34 @@
 
         <h2>開発のプロセスと工夫</h2>
         <div class="point-box">
-          <p>「幹事の負担を最小限にする」ことを目標に、要件定義から詳細設計、実装までを4人のチームで行い、アジャイル開発でコア機能から順次追加、改善を繰り返しました。</p>
+          <p>アジャイル開発でコア機能から順次追加、改善を繰り返しました。</p>
+          
           <h3>1. Gemini API による自然な対話の実装</h3>
-          <p>定型文以外の入力に対してもGemini APIを介して解析を行うことで、柔軟にユーザーの意図を汲み取ることを可能にしました。</p>
+          <p>定型文以外の入力に対してもGemini APIを介して解析を行い、ユーザーが利用したい機能の推測、またその機能に必要な情報の抜き出しを行い自然な会話の中で複数の機能を利用可能にしました。
+          普段の会話を邪魔しないために@on,@offのコマンドにより機能の稼働、停止を操作します</p>
+          
           <h3>2. 複数APIを連携させた店舗検索ロジック</h3>
-          <p>入力をGeminiでJSON形式に構造化し、必要なパラメータを抽出。これをHot Pepper APIへ受け渡し店舗検索を行う機能を実装しました。</p>
+          <p>入力をGeminiでJSON形式に構造化し、必要なパラメータを抽出。これをHot Pepper APIへ受け渡し店舗検索を行う機能を実装しました。
+            「近くの居酒屋」や「新宿で個室の焼肉を探して」と送られると条件に対応する店舗の検索結果上位5つを表示します。
+            工夫点として、「博多でラーメン」と送られた際、[博多][ラーメン]の二つの情報を抜き出すので博多以外の地域の博多ラーメンが出てしまっていましたが、地域の情報を必須とすることで解決しました。
+            また、「近くの」などの文言があった場合に位置情報送信用のボタンを表示し位置情報を利用して検索できるようになっています。
+          </p>
           <div style="text-align: center; margin: 10px 0;">
             <img src="img/chatbot01.jpg" alt="対話入力例" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
             <img src="img/chatbot02.jpg" alt="店舗検索結果" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
           </div>
+          
           <h3>3. Googleカレンダー同期による予定管理</h3>
-          <p>Google Calendar APIと連携し、対話から抽出した日時情報をカレンダーへ自動登録。LINEを起点としたシームレスな予定管理を可能にしました。</p>
+          <p>Google Calendar APIと連携し、グループメンバーの予定を取得し空き日を表示、グループチャット上からカレンダーに予定を追加が可能です。
+            「いつが空いてる？」「〇日の〇時に集合」などで、LINEを起点としたシームレスな予定管理を可能にしました。</p>
           <div style="text-align: center; margin: 10px 0;">
             <img src="img/chatbot03.jpg" alt="投票機能" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
             <img src="img/chatbot04.jpg" alt="カレンダー空き時間照会" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
+          </div>
+          <h3>4. 投票機能の実装</h3>
+          <p>検索した店舗の中から投票したり、予定の候補日から投票することが可能です</p>
+          <div style="text-align: center; margin: 10px 0;">
+            <img src="img/chatbot03.jpg" alt="投票機能" style="width: 45%; border-radius: 8px; border: 1px solid #ddd;">
           </div>
         </div>
 
@@ -57,7 +72,9 @@
           <h3>現在の到達点</h3>
           <p>LLMと外部APIを統合し、対話型サービスを構築。</p>
           <h3>次なる課題と展望</h3>
-          <p>レスポンスの高速化:複数APIの逐次処理による返信遅延が課題。今後は非同期処理の導入による速度改善を目指します。</p>
+          <p>レスポンスの高速化:複数APIの逐次処理による返信遅延が課題。今後は非同期処理の導入による速度改善を目指します。
+          また新たな機能としてpaypayなどの決済アプリと連携した割り勘、集金機能の実装を検討しています。</p>
+          
         </div>
 
         <div class="action-box">
